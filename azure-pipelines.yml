@@ -8,5 +8,8 @@ stages:
     jobs:
       - job: "Build_JOB"
         steps:
-          - task: "PipAuthenticate@1"
+          - task: "PythonScript@0"
+            inputs:
+              scriptSource: 'filePath'
+              scriptPath: 'hello_app/webapp.py'
             displayName: "Building project"
