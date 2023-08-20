@@ -11,5 +11,5 @@ stages:
           - task: "PythonScript@0"
             inputs:
               scriptSource: 'filePath'
-              scriptPath: 'hello_app/webapp.py'
+              scriptPath: 'startup.py'
             displayName: "Building project"
