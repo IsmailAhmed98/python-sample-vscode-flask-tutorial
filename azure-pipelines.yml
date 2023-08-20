@@ -1,0 +1,12 @@
+---
+pool:
+  vmImage: 'ubuntu-22.04'
+trigger:
+  - master
+stages:
+  - stage: "Build"
+    jobs:
+      - job: "Build_JOB"
+        steps:
+          - task: "PipAuthenticate@1"
+            displayName: "Building project"
