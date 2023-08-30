@@ -1,15 +1,21 @@
 ---
-pool:
-  vmImage: 'ubuntu-22.04'
+pool: 'Linux'
 trigger:
-  - master
+ - master
 stages:
-  - stage: "Build"
-    jobs:
-      - job: "Build_JOB"
-        steps:
-          - task: "PythonScript@0"
-            inputs:
-              scriptSource: 'filePath'
-              scriptPath: 'startup.py'
-            displayName: "Building project"
+ - stage: 'build'
+   jobs:
+    - job: 'build'
+      steps:
+       - task: UsePythonVersion@0
+         inputs:
+          versionSpec: '3.11'
+         displayName: 'Version'
+       - script: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          displayName: 'Install dependencies'
+       - script: |
+          pip install pytest pytest-azurepipelines
+          pytest
+          displayName: 'pytest'  
